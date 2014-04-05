@@ -1,0 +1,76 @@
+﻿<Page
+    x:Name="pageRoot"
+    x:Class="BreakingNewsMX.HubPage"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BreakingNewsMX"
+    xmlns:data="using:BreakingNewsMX.Data"
+    xmlns:common="using:BreakingNewsMX.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="#FFF6F6EF">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        
+        <Hub SectionHeaderClick="Hub_SectionHeaderClick">
+            <Hub.Header>
+                <StackPanel Background="#FFDD3618" Width="3000" Margin="-40,0,-40,0">
+                    <TextBlock x:Name="pageTitle" Margin="80,24,40,24" Text="Breaking News" Style="{StaticResource HeaderTextBlockStyle}" VerticalAlignment="Top" IsHitTestVisible="false" TextWrapping="NoWrap" Foreground="#FFFFFFFF" />
+                </StackPanel>
+            </Hub.Header>
+            <HubSection Width="780" Margin="0,0,80,0" DataContext="{Binding DefaultViewModel}">
+                <HubSection.Background>
+                    <ImageBrush x:Name="imgHeroPhoto" ImageSource="{Binding imgHeroPhoto}" Stretch="UniformToFill" />
+                </HubSection.Background>
+                <DataTemplate>
+                    <StackPanel Margin="40,0,0,0">
+                        <TextBlock x:Name="txtHeroTopic" Text="{Binding txtHeroTopic}" Foreground="#FFFFFFFF" Style="{StaticResource TitleTextBlockStyle}" FontSize="32" LineHeight="32" TextWrapping="Wrap" />
+                        <TextBlock x:Name="txtHeroContent" Text="{Binding txtHeroContent}" Foreground="#FFFFFFFF" Style="{StaticResource SubtitleTextBlockStyle}" FontSize="64" LineHeight="68" FontWeight="Light" TextWrapping="Wrap" />
+                    </StackPanel>
+                </DataTemplate>
+            </HubSection>
+            <HubSection Width="500">
+                <HubSection.Header>
+                    <TextBlock TextLineBounds="TrimToBaseline" OpticalMarginAlignment="TrimSideBearings" Text="Latest" Foreground="#FF000000"/>
+                </HubSection.Header>
+                <DataTemplate>
+                    <Grid Margin="0,0,0,0">
+                        <ListView x:Name="lstLatestPosts" ItemsSource="{Binding LatestPosts}" Margin="-5,0,0,0" Foreground="Black" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <local:PostControl Margin="0,0,0,24" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+            <HubSection Width="500">
+                <HubSection.Header>
+                    <TextBlock TextLineBounds="TrimToBaseline" OpticalMarginAlignment="TrimSideBearings" Text="Popular" Foreground="#FF000000"/>
+                </HubSection.Header>
+                <DataTemplate>
+                    <Grid Margin="0,0,0,0">
+                        <ListView x:Name="lstPopularPosts" ItemsSource="{Binding PopularPosts}" Margin="-5,0,0,0" Foreground="Black" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <local:PostControl Margin="0,0,0,24" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+        </Hub>
+    </Grid>
+</Page>

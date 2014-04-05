@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="BreakingNewsMX.PostControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BreakingNewsMX.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <StackPanel x:Name="LayoutRoot" Background="Transparent">
+        <TextBlock x:Name="txtTopic" Text="{Binding FriendlyTopic}" TextWrapping="Wrap" Margin="0,0,0,0" Style="{StaticResource TitleTextBlockStyle}" Foreground="#FF98AAB9" />
+        <Image x:Name="imgMedia" Margin="0,8,0,6" Visibility="{Binding FriendlyImageVisibility}" Source="{Binding FriendlyImage}" />
+        <TextBlock x:Name="txtContent" Text="{Binding content}" TextWrapping="Wrap" Margin="0,0,0,0" Style="{StaticResource SubtitleTextBlockStyle}" Foreground="{Binding content_foreground}" />
+        <TextBlock x:Name="txtDescription" Text="{Binding FriendlyDate}" TextWrapping="Wrap" Margin="0,0,0,0" Style="{StaticResource BaseTextBlockStyle}" Foreground="#FFD4958A" />
+    </StackPanel>
+
+</UserControl>
